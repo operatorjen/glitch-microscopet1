@@ -12,6 +12,7 @@ function init() {
 
 let r = 0, g = 0, b  = 0, a = 0.5
 let counter = 0
+let multiplier = 0.01
 
 function render() {
   // center
@@ -19,33 +20,37 @@ function render() {
    * r: 71-200, g: 50-170, b: 64-200, a: 0.4-0.9 
    */
 
-  counter += 0.7934834
+  counter += 0.934834
   
   if (counter < canvas.width / 1.5) {
     r = Math.floor(Math.random() * 200 + 101)
     g = Math.floor(Math.random() * 80 + 50)
     b = Math.floor(Math.random() * 190 + 64)
-    a = Math.random() * 0.6
-  } else if (counter > canvas.width) {
+    a = Math.random() * 0.8
+    multiplier += 0.85
+  } else if (counter >= canvas.width / 1.5 && counter < canvas.width) {
     r = Math.floor(Math.random() * 220 + 151)
     g = Math.floor(Math.random() * 40 + 10)
     b = Math.floor(Math.random() * 150 + 64)
-    a = Math.random() * 0.79 - 0.6  
+    a = Math.random() * 0.89 - 0.6
+    multiplier += 0.55
   } else {
     r = Math.floor(Math.random() * 120 + 11)
     g = Math.floor(Math.random() * 210 + 100)
     b = Math.floor(Math.random() * 210 + 104)
-    a = Math.random() * 0.69 - 0.4  
+    a = Math.random() * 0.79 - 0.4  
+    multiplier += 0.15
   }
 
   ctx.beginPath()
   ctx.fillStyle = `rgba(${r},${g},${b},${a})`
   ctx.strokeStyle = `rgba(${r},${g},${b},0.98)`
-  ctx.strokeWidth = 1
+  ctx.lineWidth = 1
+  ctx.lineStyle = 'dotted'
   ctx.translate(Math.cos(counter) * counter / 5, Math.sin(counter) * counter / 5)
-  ctx.arc(Math.sin(counter * 0.05 * counter), 
-          Math.cos(counter * 0.01 * counter),
-          Math.random() * 10 + 2, 0, 2 * Math.PI)
+  ctx.arc(Math.sin(counter * 0.5 * counter), 
+          Math.cos(counter * 0.1 * counter),
+          Math.random() * 10 / multiplier + 2, 0, 2 * Math.PI)
   ctx.fill()
   ctx.stroke()
   ctx.closePath()
