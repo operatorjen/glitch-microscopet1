@@ -22,34 +22,41 @@ function render() {
 
   counter += 0.934834
   
-  if (counter < canvas.width / 1.2) {
+  if (counter < canvas.width / 2) {
     r = Math.floor(Math.random() * 200 + 101)
     g = Math.floor(Math.random() * 80 + 50)
     b = Math.floor(Math.random() * 210 + 74)
-    a = Math.random() * 0.8
+    a = Math.random() * 0.3
+    ctx.fillStyle = `rgba(${r},${g},${b},${a})`
     multiplier += 0.0025
-  } else if (counter >= canvas.width / 1.2 && counter < canvas.width / 1.01) {
+  } else if (counter >= canvas.width / 1.2 && counter < canvas.width / 2) {
     r = Math.floor(Math.random() * 220 + 151)
     g = Math.floor(Math.random() * 60 + 10)
     b = Math.floor(Math.random() * 100 + 54)
     a = Math.random() * 0.89 - 0.4
+    ctx.fillStyle = `rgba(${r},${g},${b},${a})`
     multiplier += 0.0035
-  } else if (counter >= canvas.width / 1.01 && counter < canvas.width)  {
+  } else if (counter >= canvas.width / 1.7 && counter < canvas.width / 1.5)  {
+    r = Math.floor(Math.random() * 20 + 11)
+    g = Math.floor(Math.random() * 210 + 100)
+    b = Math.floor(Math.random() * 220 + 190)
+    a = Math.random() * 0.79 - 0.4  
+    multiplier += 0.0055
+  } else {
     r = Math.floor(Math.random() * 230 + 211)
     g = Math.floor(Math.random() * 10 + 1)
-    b = Math.floor(Math.random() * 210 + 104)
-    a = Math.random() * 0.79 - 0.4  
+    b = Math.floor(Math.random() * 80 + 10)
+    a = Math.random() * 0.99 - 0.4  
+    ctx.fillStyle = `rgba(${r},${g},${b},${a})`
     multiplier += 0.0055
   }
 
   ctx.beginPath()
-  ctx.fillStyle = `rgba(${r},${g},${b},${a})`
-  ctx.strokeStyle = `rgba(1,${g},${b},0.58)`
+  ctx.strokeStyle = `rgba(${r},${g},${b},0.58)`
   ctx.lineWidth = 1
-  ctx.lineStyle = 'dotted'
   ctx.translate(Math.cos(counter) * counter / 5, Math.sin(counter) * counter / 5)
-  ctx.arc(Math.sin(counter * 0.05 * counter), 
-          Math.cos(counter * 0.01 * counter),
+  ctx.arc(Math.sin(counter * Math.random() * counter), 
+          Math.cos(counter * Math.random() * counter),
           (Math.random() * multiplier * 10 + 2), 0, 2 * Math.PI)
   ctx.fill()
   ctx.stroke()
