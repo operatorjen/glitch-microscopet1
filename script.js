@@ -56,9 +56,9 @@ function render() {
   ctx.strokeStyle = `rgba(${r},${g},${b},0.58)`
   ctx.lineWidth = 1
   ctx.translate(Math.cos(counter) * counter / 6, Math.sin(counter) * counter / 5)
-  ctx.arc(Math.sin(counter * Math.random() / counter), 
-          Math.sin(counter / Math.random() * counter),
-          (Math.random() * multiplier * 6 + 2), 0, 2 * Math.PI)
+  ctx.arc(Math.sin(counter * Math.random() + counter), 
+          Math.cos(counter * Math.random() + counter),
+          (Math.random() * multiplier * 7 + 1), 0, 2 * Math.PI)
   ctx.fill()
   ctx.stroke()
   ctx.closePath()
