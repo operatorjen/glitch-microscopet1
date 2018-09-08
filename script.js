@@ -18,45 +18,43 @@ function render() {
   /* radius: 2 - 10px
    * r: 71-200, g: 50-170, b: 64-200, a: 0.4-0.9 
    */
-  if (counter < 100) {
-    counter += 0.8
+  if (counter < 250) {
+    counter += 0.9
+    r = Math.floor(Math.random() * 120 + 11)
+    g = Math.floor(Math.random() * 210 + 100)
+    b = Math.floor(Math.random() * 210 + 104)
+    a = Math.random() * 0.8
+    ctx.beginPath()
+   // ctx.fillStyle = `rgba(${r},${g},${b},${a})`
+    ctx.strokeStyle = `rgba(${r},${g},${b},${a})`
+    ctx.strokeWidth = 1
+    ctx.translate(Math.cos(counter) * counter, Math.sin(counter) * counter)
+    ctx.arc(Math.sin(counter) / 6, 
+            Math.cos(counter) / 3,
+            Math.random() * 10 - 2, 0, 2 * Math.PI)
+   // ctx.fill()
+    ctx.stroke()
+    ctx.closePath()
+  } else {
+    counter += 0.99
     r = Math.floor(Math.random() * 200 + 101)
     g = Math.floor(Math.random() * 80 + 50)
     b = Math.floor(Math.random() * 190 + 64)
     a = Math.random() * 0.4
     ctx.beginPath()
-    ctx.fillStyle = `rgba(${r},${g},${b},${a})`
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)'
+    ctx.strokeWidth = 1
+  //  ctx.fillStyle = `rgba(${r},${g},${b},${a})`
+    ctx.strokeStyle = `rgba(${r},${g},${b},${a})`
     //ctx.transform(canvas.width, canvas.height)
     ctx.translate(Math.cos(counter) * counter, Math.sin(counter) * counter)
     ctx.arc(Math.sin(counter), 
             Math.cos(counter),
-            counter, 0, 2 * Math.PI)
+            counter / 5, 0, 2 * Math.PI)
     ctx.stroke()
-    ctx.fill()
-    ctx.closePath()
-    //ctx.transform(-canvas.width, -canvas.height)
-  } else {
-    counter += 1
-    r = Math.floor(Math.random() * 20 + 11)
-    g = Math.floor(Math.random() * 210 + 100)
-    b = Math.floor(Math.random() * 210 + 104)
-    a = Math.random() * 0.99 - 0.4
-    ctx.beginPath()
-    ctx.fillStyle = `rgba(${r},${g},${b},${a})`
-    ctx.strokeStyle = `rgba(255, 255, 255, ${a})`
-    ctx.translate(Math.cos(counter) * counter, Math.sin(counter) * counter)
-    ctx.arc(Math.sin(counter), 
-            Math.cos(counter),
-            counter * 1.5, 0, 2 * Math.PI)
-    ctx.fill()
+    //ctx.fill()
     ctx.closePath()
     //ctx.transform(-canvas.width, -canvas.height)
   }  
-
-  
-  // outer
-  
   
   // draw
   
@@ -66,7 +64,6 @@ function render() {
 window.onresize = function () {
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
-  init()
 }
 
 init()
