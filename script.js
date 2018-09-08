@@ -22,35 +22,35 @@ function render() {
 
   counter += 0.934834
   
-  if (counter < canvas.width / 1.5) {
+  if (counter < canvas.width / 1.2) {
     r = Math.floor(Math.random() * 200 + 101)
     g = Math.floor(Math.random() * 80 + 50)
-    b = Math.floor(Math.random() * 190 + 64)
+    b = Math.floor(Math.random() * 210 + 74)
     a = Math.random() * 0.8
-    multiplier += 0.85
-  } else if (counter >= canvas.width / 1.5 && counter < canvas.width) {
+    multiplier += 0.0025
+  } else if (counter >= canvas.width / 1.2 && counter < canvas.width / 1.01) {
     r = Math.floor(Math.random() * 220 + 151)
-    g = Math.floor(Math.random() * 40 + 10)
-    b = Math.floor(Math.random() * 150 + 64)
-    a = Math.random() * 0.89 - 0.6
-    multiplier += 0.55
-  } else {
-    r = Math.floor(Math.random() * 120 + 11)
-    g = Math.floor(Math.random() * 210 + 100)
+    g = Math.floor(Math.random() * 60 + 10)
+    b = Math.floor(Math.random() * 100 + 54)
+    a = Math.random() * 0.89 - 0.4
+    multiplier += 0.0035
+  } else if (counter >= canvas.width / 1.01 && counter < canvas.width)  {
+    r = Math.floor(Math.random() * 230 + 211)
+    g = Math.floor(Math.random() * 10 + 1)
     b = Math.floor(Math.random() * 210 + 104)
     a = Math.random() * 0.79 - 0.4  
-    multiplier += 0.15
+    multiplier += 0.0055
   }
 
   ctx.beginPath()
   ctx.fillStyle = `rgba(${r},${g},${b},${a})`
-  ctx.strokeStyle = `rgba(${r},${g},${b},0.98)`
+  ctx.strokeStyle = `rgba(1,${g},${b},0.58)`
   ctx.lineWidth = 1
   ctx.lineStyle = 'dotted'
   ctx.translate(Math.cos(counter) * counter / 5, Math.sin(counter) * counter / 5)
-  ctx.arc(Math.sin(counter * 0.5 * counter), 
-          Math.cos(counter * 0.1 * counter),
-          Math.random() * 10 / multiplier + 2, 0, 2 * Math.PI)
+  ctx.arc(Math.sin(counter * 0.05 * counter), 
+          Math.cos(counter * 0.01 * counter),
+          (Math.random() * multiplier * 10 + 2), 0, 2 * Math.PI)
   ctx.fill()
   ctx.stroke()
   ctx.closePath()
