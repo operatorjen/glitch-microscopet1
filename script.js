@@ -10,11 +10,30 @@ function init() {
   ctx.translate(canvas.width / 3, canvas.height / 3)
 }
 
+let r = 0, g = 0, b  = 0, a = 0.5
+
+
+
 function render() {
   //ctx.beginPath()
+  
+  // center
+  /* radius: 2 - 10px
+   * r: 71-200, g: 50-170, b: 64-200, a: 0.4-0.9 
+   */
+  
+  
+  // middle
+  
+  // outer
+  
+  
+  // draw
+  console.log(ctx)
+  ctx.strokeStyle(`rgba({r},${g},${b},${a})`)
   ctx.arc(100, 75, 50, 0, 2 * Math.PI)
   ctx.stroke()
-  requestAnimationFrame(render)
+  //requestAnimationFrame(render)
 }
   
 window.onresize = function () {
