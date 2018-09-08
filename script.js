@@ -20,7 +20,7 @@ function render() {
    * r: 71-200, g: 50-170, b: 64-200, a: 0.4-0.9 
    */
 
-  counter += 0.984834
+  counter += 0.9999999
   
   if (counter < canvas.width / 2) {
     r = Math.floor(Math.random() * 200 + 101)
@@ -29,35 +29,35 @@ function render() {
     a = Math.random() * 0.3
     ctx.fillStyle = `rgba(${r},${g},${b},${a})`
     multiplier += 0.0025
-  } else if (counter >= canvas.width / 1.5 && counter < canvas.width / 1.3) {
+  } else if (counter >= canvas.width / 2 && counter < canvas.width / 1.3) {
     r = Math.floor(Math.random() * 220 + 151)
     g = Math.floor(Math.random() * 60 + 10)
     b = Math.floor(Math.random() * 150 + 94)
     a = Math.random() * 0.89 - 0.4
     ctx.fillStyle = `rgba(${r},${g},${b},${a})`
-    multiplier += 0.00035
-  } else if (counter >= canvas.width / 1.3 && counter < canvas.width * 2.2)  {
+    multiplier += 0.00085
+  } else if (counter >= canvas.width / 1.3 && counter < canvas.width * 1.5)  {
     r = Math.floor(Math.random() * 20 + 11)
     g = Math.floor(Math.random() * 210 + 100)
     b = Math.floor(Math.random() * 220 + 190)
     a = Math.random() * 0.89 - 0.4 
     ctx.fillStyle = `rgba(${r},${g},${b},${a})`
-    multiplier += 0.0005
+    multiplier += 0.0025
   } else {
     r = Math.floor(Math.random() * 230 + 211)
     g = Math.floor(Math.random() * 10 + 1)
     b = Math.floor(Math.random() * 200 + 150)
     a = Math.random() * 0.79 - 0.4  
     ctx.fillStyle = `rgba(${r},${g},${b},${a})`
-    multiplier += 0.00005
+    multiplier += 0.00025
   }
 
   ctx.beginPath()
   ctx.strokeStyle = `rgba(${r},${g},${b},0.58)`
   ctx.lineWidth = 1
-  ctx.translate(Math.cos(counter) * counter / 5, Math.sin(counter) * counter / 5)
-  ctx.arc(Math.sin(counter * Math.random() * counter), 
-          Math.cos(counter * Math.random() * counter),
+  ctx.translate(Math.cos(counter) * counter / 6, Math.sin(counter) * counter / 5)
+  ctx.arc(Math.sin(counter * Math.random() / counter), 
+          Math.sin(counter / Math.random() * counter),
           (Math.random() * multiplier * 6 + 2), 0, 2 * Math.PI)
   ctx.fill()
   ctx.stroke()
@@ -66,7 +66,7 @@ function render() {
   
   // draw
   
-  if (counter < canvas.width * 2.5) {
+  if (counter < canvas.width * 2) {
     requestAnimationFrame(render)
   }
 }
