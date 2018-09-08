@@ -19,34 +19,33 @@ function render() {
    * r: 71-200, g: 50-170, b: 64-200, a: 0.4-0.9 
    */
 
-  counter += 0.9934834
-  r = Math.floor(Math.random() * 200 + 101)
-  g = Math.floor(Math.random() * 80 + 50)
-  b = Math.floor(Math.random() * 190 + 64)
-  a = Math.random() * 0.8
-
-  if (counter > canvas.width / 2 && counter < 120) {
+  counter += 0.7934834
+  
+  if (counter < canvas.width / 1.5) {
+    r = Math.floor(Math.random() * 200 + 101)
+    g = Math.floor(Math.random() * 80 + 50)
+    b = Math.floor(Math.random() * 190 + 64)
+    a = Math.random() * 0.6
+  } else if (counter > canvas.width) {
     r = Math.floor(Math.random() * 220 + 151)
     g = Math.floor(Math.random() * 40 + 10)
     b = Math.floor(Math.random() * 150 + 64)
-    a = Math.random() * 0.99 - 0.6  
-  }
-  
-  if (counter >= 120) {
+    a = Math.random() * 0.79 - 0.6  
+  } else {
     r = Math.floor(Math.random() * 120 + 11)
     g = Math.floor(Math.random() * 210 + 100)
     b = Math.floor(Math.random() * 210 + 104)
-    a = Math.random() * 0.79 - 0.4  
+    a = Math.random() * 0.69 - 0.4  
   }
 
   ctx.beginPath()
   ctx.fillStyle = `rgba(${r},${g},${b},${a})`
-  ctx.strokeStyle = `rgba(${r},${g},${b},${a})`
-  ctx.strokeWidth = 5
-  ctx.translate(Math.cos(counter) * counter, Math.sin(counter) * counter)
-  ctx.arc(Math.sin(counter / 2 * counter), 
-          Math.sin(counter / 2 * counter) + Math.random() * 2,
-          Math.random() * 10 * Math., 0, 2 * Math.PI)
+  ctx.strokeStyle = `rgba(${r},${g},${b},0.98)`
+  ctx.strokeWidth = 1
+  ctx.translate(Math.cos(counter) * counter / 5, Math.sin(counter) * counter / 5)
+  ctx.arc(Math.sin(counter * 0.05 * counter), 
+          Math.cos(counter * 0.01 * counter),
+          Math.random() * 10 + 2, 0, 2 * Math.PI)
   ctx.fill()
   ctx.stroke()
   ctx.closePath()
